@@ -1,5 +1,7 @@
 package com.main.sunhacks.action;
 
+import java.net.URLEncoder;
+
 import com.main.sunhacks.handler.QueueHandler;
 import com.opensymphony.xwork2.Action;
 
@@ -14,7 +16,8 @@ public class QueueAction {
 	public String fetchBuses() {
 		try {
 			System.out.println("Fetching busses");
-			buses = QueueHandler.fetchBuses().toString();
+			buses = URLEncoder.encode(QueueHandler.fetchBuses().toString(), "UTF-8");
+			System.out.println("buses " + buses);
 		} catch(Exception e) {
 			buses = "Standard";
 			e.printStackTrace();
