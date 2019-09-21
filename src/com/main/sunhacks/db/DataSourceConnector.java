@@ -30,6 +30,7 @@ public class DataSourceConnector {
 		
 		//Uncomment below  two lines to test using java directly.
 		String currentDirectory = System.getProperty("user.dir");
+		System.out.println("User dir " + currentDirectory);
 		File propertyFile = new File(currentDirectory + "/WebContent/WEB-INF/conf/" + DB_PROPERTY_FILE);
 		
 

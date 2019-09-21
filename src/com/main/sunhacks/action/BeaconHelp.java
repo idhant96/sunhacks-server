@@ -14,9 +14,7 @@ public class BeaconHelp {
 	
 	public String getBeaconUID() {
 		try {
-			System.out.println("HEREEEE");
 			uid = UIDHandler.getBeaconUID();
-			System.out.println("UID IS " + uid);
 		} catch (Exception e) {
 			LOGGER.log(Level.SEVERE, "Failed to create Beacon UID" , e);
 		}

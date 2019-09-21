@@ -13,6 +13,7 @@ public class QueueAction {
 	
 	public String fetchBuses() {
 		try {
+			System.out.println("Fetching busses");
 			buses = QueueHandler.fetchBuses().toString();
 		} catch(Exception e) {
 			buses = "Standard";
