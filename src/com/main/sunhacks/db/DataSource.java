@@ -22,7 +22,7 @@ public class DataSource {
 			String name = rs.getString("name");
 			Long id = rs.getLong("id");
 			String fromDestination = rs.getString("from_destination");
-			String toDestination = rs.getString("toDestination");
+			String toDestination = rs.getString("to_destination");
 			int capacity = rs.getInt("capacity");
 			Bus bus = new Bus();
 			bus.setId(id);
