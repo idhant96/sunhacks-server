@@ -33,7 +33,7 @@ public class DataSourceConnector {
 		System.out.println("User dir " + currentDirectory);
 	//	File propertyFile = new File(currentDirectory + "/WebContent/WEB-INF/conf/" + DB_PROPERTY_FILE);
 		File propertyFile = new File("/home/ubuntu/tomcat/apache-tomcat-8.0.23/webapps/ROOT/WEB-INF/conf/" + DB_PROPERTY_FILE);
-		
+		System.out.println(propertyFile.getAbsoluteFile());
 		
 
 		try (InputStream input = new FileInputStream(propertyFile)) {

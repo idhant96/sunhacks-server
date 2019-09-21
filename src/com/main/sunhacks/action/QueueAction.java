@@ -17,6 +17,7 @@ public class QueueAction {
 			buses = QueueHandler.fetchBuses().toString();
 		} catch(Exception e) {
 			buses = "Standard";
+			e.printStackTrace();
 		}
 		return Action.SUCCESS;
 	}
