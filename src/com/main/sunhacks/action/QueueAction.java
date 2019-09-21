@@ -26,7 +26,12 @@ public class QueueAction {
 	}
 	
 	public String addUserToQueue() {
-		response = QueueHandler.addUserToQueue(beaconUID, busID).toString();
+		try {
+			response = Util.encodeData(QueueHandler.addUserToQueue(beaconUID, busID).toString());
+		} catch (UnsupportedEncodingException e) {
+			response = "Failed";
+			e.printStackTrace();
+		}
 		return Action.SUCCESS;
 	}
 
@@ -36,6 +41,15 @@ public class QueueAction {
 		} catch (UnsupportedEncodingException e) {
 			e.printStackTrace();
 			response = "Failed to bus information";
+		}
+		return Action.SUCCESS;
+	}
+	
+	public String requeue() {
+		try {
+			QueueHandler.requeue(busID);
+		} catch(Exception e) {
+			e.printStackTrace();
 		}
 		return Action.SUCCESS;
 	}
@@ -74,6 +88,14 @@ public class QueueAction {
 
 	public void setBeaconUID(String beaconUID) {
 		this.beaconUID = beaconUID;
+	}
+
+	public String getUserUID() {
+		return userUID;
+	}
+
+	public void setUserUID(String userUID) {
+		this.userUID = userUID;
 	}
 
 }

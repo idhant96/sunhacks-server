@@ -7,8 +7,6 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.util.Properties;
 
-import com.main.sunhacks.util.Util;
-
 
 public class DataSourceConnector {
 
@@ -25,14 +23,12 @@ public class DataSourceConnector {
 		if(con != null) {
 			con.close();
 		}
-		
-		//File propertyFile = Util.getFileFromResources(DB_PROPERTY_FILE);
-		
+
 		//Uncomment below  two lines to test using java directly.
 		String currentDirectory = System.getProperty("user.dir");
 		System.out.println("User dir " + currentDirectory);
-	//	File propertyFile = new File(currentDirectory + "/WebContent/WEB-INF/conf/" + DB_PROPERTY_FILE);
-		File propertyFile = new File("/home/ubuntu/tomcat/apache-tomcat-8.0.23/webapps/ROOT/WEB-INF/conf/" + DB_PROPERTY_FILE);
+		File propertyFile = new File("/Users/akhilesh/tomcat/apache-tomcat-8.5.45/webapps/ROOT/WEB-INF/conf/" + DB_PROPERTY_FILE);
+	//	File propertyFile = new File("/home/ubuntu/tomcat/apache-tomcat-8.0.23/webapps/ROOT/WEB-INF/conf/" + DB_PROPERTY_FILE);
 		System.out.println(propertyFile.getAbsoluteFile());
 		
 

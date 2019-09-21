@@ -9,5 +9,6 @@ public class SqlQueries {
 	//public static final String SELECT_USER = "select * from Users where ID = %s";
 	
 	public static final String SELECT_BUSES = "select * from Buses";
+	public static final String FETCH_BUS_CAPACITY = "select capacity from Buses where id = %s";
 
 }

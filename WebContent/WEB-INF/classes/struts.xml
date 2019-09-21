@@ -39,6 +39,10 @@
 		<action name="userboarded" class="com.main.sunhacks.action.QueueAction" method="userBoarded">
 			<result type="json" />
 		</action>
+		
+		<action name="requeue" class="com.main.sunhacks.action.QueueAction" method="requeue">
+			<result type="json" />
+		</action>
 
 		<action name="home" class="com.main.sunhacks.Home" method="printHome">
 			<result type="dispatcher">/jsp/home.jsp</result>
