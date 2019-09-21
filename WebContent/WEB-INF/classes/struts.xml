@@ -5,7 +5,7 @@
 	<constant name="struts.devMode" value="true" />
 	<constant name="struts.enable.DynamicMethodInvocation" value="false"/>
 	
-	<package name="website-default" extends="struts-default,json-default">
+	<package name="website-default" extends="struts-default, json-default">
 		<result-types>
 			<result-type name="json" default="true"
 				class="org.apache.struts2.json.JSONResult">
@@ -28,10 +28,18 @@
 			<result type="json"/>
 		</action>
 		
-		<action name="addUser" class="com.main.sunhacks.action.QueueAction" method="addUserToQueue">
+		<action name="adduser" class="com.main.sunhacks.action.QueueAction" method="addUserToQueue">
 			<result type="json" />
 		</action>
 		
+		<action name="fetchuserqueue" class="com.main.sunhacks.action.QueueAction" method="fetchUserQueue">
+			<result type="json" />
+		</action>
+		
+		<action name="userboarded" class="com.main.sunhacks.action.QueueAction" method="userBoarded">
+			<result type="json" />
+		</action>
+
 		<action name="home" class="com.main.sunhacks.Home" method="printHome">
 			<result type="dispatcher">/jsp/home.jsp</result>
 		</action>

@@ -1,23 +1,23 @@
 package com.main.sunhacks.action;
 
-import java.net.URLEncoder;
+import java.io.UnsupportedEncodingException;
 
 import com.main.sunhacks.handler.QueueHandler;
+import com.main.sunhacks.util.Util;
 import com.opensymphony.xwork2.Action;
 
 public class QueueAction {
 	
 	private String beaconUID;
-	private int busID;
+	private Long busID;
 	private String buses;
 	private String response;
+	private String userUID;
 
 	
 	public String fetchBuses() {
 		try {
-			System.out.println("Fetching busses");
-			buses = URLEncoder.encode(QueueHandler.fetchBuses().toString(), "UTF-8");
-			System.out.println("buses " + buses);
+			buses = Util.encodeData(QueueHandler.fetchBuses().toString());
 		} catch(Exception e) {
 			buses = "Standard";
 			e.printStackTrace();
@@ -26,14 +26,24 @@ public class QueueAction {
 	}
 	
 	public String addUserToQueue() {
+		response = QueueHandler.addUserToQueue(beaconUID, busID).toString();
+		return Action.SUCCESS;
+	}
+
+	public String fetchUserQueue() {
 		try {
-			response = QueueHandler.addUserToQueue(beaconUID, busID).toString();
-		} catch (Exception e) {
-			response = "Failed to add user to Queue";
+			response = Util.encodeData(QueueHandler.getBusUsersToQueueNo(busID).toString());
+		} catch (UnsupportedEncodingException e) {
+			e.printStackTrace();
+			response = "Failed to bus information";
 		}
 		return Action.SUCCESS;
 	}
 
+	public String userBoarded() {
+		QueueHandler.userBoarded(busID, userUID);
+		return Action.SUCCESS;
+	}
 
 	public String getBuses() {
 		return buses;
@@ -42,11 +52,11 @@ public class QueueAction {
 		this.buses = buses;
 	}
 
-	public int getBusID() {
+	public Long getBusID() {
 		return busID;
 	}
 
-	public void setBusID(int busID) {
+	public void setBusID(Long busID) {
 		this.busID = busID;
 	}
 
