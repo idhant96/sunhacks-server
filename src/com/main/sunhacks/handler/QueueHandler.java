@@ -16,6 +16,7 @@ public class QueueHandler {
 	}
 
 	public static JSONObject addUserToQueue(String beaconUID, long busID) {
+		System.out.println("2. BUSES QUEUE " + busQueue);
 		JSONObject responseJSONObj = new JSONObject();
 		int lastQueueNo = 0;
 		String userUID = "";
@@ -26,9 +27,11 @@ public class QueueHandler {
 			if (!uidVerified) {
 				throw new Exception("UID Not verified");
 			}
+			System.out.println("Beacon UID " + beaconUID + uidVerified );
 			userUID = UIDGenerator.generateUID();
 			Map<String, Integer> userToQueueNo = busQueue.get(busID);
 			if (userToQueueNo == null) {
+				System.out.println("New user for bus");
 				userToQueueNo = new HashMap<String, Integer>();
 				busQueue.put(busID, userToQueueNo);
 			}
@@ -51,7 +54,7 @@ public class QueueHandler {
 				}
 				
 			}
-			busQueue.put(busID, userToQueueNo);
+			//busQueue.put(busID, userToQueueNo);
 		} catch (Exception e) {
 			e.printStackTrace();
 			lastQueueNo = -1;
@@ -64,8 +67,11 @@ public class QueueHandler {
 	}
 
 	public static JSONObject getBusUsersToQueueNo(Long busID) {
+		System.out.println("1. BUSES data " + busQueue);
+		System.out.println("GET ALL USER TO QUEUE NO FOR " + busID);
 		JSONObject userToQueueNoJSONObj = new JSONObject();
 		Map<String, Integer> userToQueueNo = busQueue.get(busID);
+		System.out.println(userToQueueNo);
 		if(userToQueueNo == null) {
 			userToQueueNo = new HashMap<>();
 		}

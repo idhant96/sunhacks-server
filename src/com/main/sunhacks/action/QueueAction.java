@@ -27,6 +27,7 @@ public class QueueAction {
 	
 	public String addUserToQueue() {
 		try {
+			System.out.println("BeaconUID " + beaconUID + " busID " + busID);
 			response = Util.encodeData(QueueHandler.addUserToQueue(beaconUID, busID).toString());
 		} catch (UnsupportedEncodingException e) {
 			response = "Failed";
