@@ -51,6 +51,7 @@ public class QueueHandler {
 				}
 				
 			}
+			busQueue.put(busID, userToQueueNo);
 		} catch (Exception e) {
 			e.printStackTrace();
 			lastQueueNo = -1;
