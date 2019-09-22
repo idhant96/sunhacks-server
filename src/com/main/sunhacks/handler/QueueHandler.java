@@ -66,6 +66,13 @@ public class QueueHandler {
 		return responseJSONObj;
 	}
 
+	public static void resetBus(Long busID) {
+		System.out.println("Beofore reset for bus " + busID + " : " + busQueue.get(busID));
+		Map<String, Integer> uq = new HashMap<>();
+		busQueue.put(busID, uq);
+		System.out.println("After reset for bus " + busID + " : " + busQueue.get(busID));
+	}
+
 	public static int getBusAvailability(Long busID) throws Exception {
 		System.out.println("Checking availability for busid " + busID + " " + busQueue);
 		int capacity = DataSource.getBusCapacity(busID);

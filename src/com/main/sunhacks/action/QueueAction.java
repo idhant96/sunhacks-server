@@ -58,6 +58,17 @@ public class QueueAction {
 		return Action.SUCCESS;
 	}
 	
+	public String resetBus() {
+		try {
+			QueueHandler.resetBus(busID)
+			buses = Util.encodeData(QueueHandler.fetchBuses().toString());
+		} catch (Exception e) {
+			e.printStackTrace();
+			buses = "Failed to bus information";
+		}
+		return Action.SUCCESS;
+	}
+
 	public String requeue() {
 		try {
 			QueueHandler.requeue(busID);

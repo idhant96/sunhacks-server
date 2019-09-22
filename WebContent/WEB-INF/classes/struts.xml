@@ -47,9 +47,9 @@
 		<action name="busavailability" class="com.main.sunhacks.action.QueueAction" method="fetchBusAvailability">
 			<result type="json" />
 		</action>
-
-		<action name="home" class="com.main.sunhacks.Home" method="printHome">
-			<result type="dispatcher">/jsp/home.jsp</result>
+		
+		<action name="resetbus" class="com.main.sunhacks.action.QueueAction" method="resetBus">
+			<result type="json" />
 		</action>
 		
 	</package>
