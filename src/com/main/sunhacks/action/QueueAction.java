@@ -13,6 +13,7 @@ public class QueueAction {
 	private String buses;
 	private String response;
 	private String userUID;
+	private int availability;
 
 	
 	public String fetchBuses() {
@@ -32,6 +33,17 @@ public class QueueAction {
 		} catch (UnsupportedEncodingException e) {
 			response = "Failed";
 			e.printStackTrace();
+		}
+		return Action.SUCCESS;
+	}
+	
+	public String fetchBusAvailability() {
+		try {
+			availability = QueueHandler.getBusAvailability(busID);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			availability = 0;
 		}
 		return Action.SUCCESS;
 	}
@@ -97,6 +109,14 @@ public class QueueAction {
 
 	public void setUserUID(String userUID) {
 		this.userUID = userUID;
+	}
+
+	public int getAvailability() {
+		return availability;
+	}
+
+	public void setAvailability(int availability) {
+		this.availability = availability;
 	}
 
 }

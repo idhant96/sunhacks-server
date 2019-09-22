@@ -66,6 +66,30 @@ public class QueueHandler {
 		return responseJSONObj;
 	}
 
+	public static int getBusAvailability(Long busID) throws Exception {
+		System.out.println("Checking availability for busid " + busID + " " + busQueue);
+		int capacity = DataSource.getBusCapacity(busID);
+		Map<String, Integer> userToQueueNo = busQueue.get(busID);
+		if (userToQueueNo == null) {
+			System.out.println("New user for bus");
+			userToQueueNo = new HashMap<String, Integer>();
+			busQueue.put(busID, userToQueueNo);
+		}
+		int lastQueueNo = 0;
+		for (String queueUserUID : userToQueueNo.keySet()) {
+			int queueNo = userToQueueNo.get(queueUserUID);
+			if (queueNo > lastQueueNo) {
+				lastQueueNo = queueNo;
+			}
+		}
+		System.out.println("Capacity is " + capacity + " lastQueueNo " + lastQueueNo );
+		if(lastQueueNo >= capacity) {
+			return 0;
+		} else {
+			return capacity - lastQueueNo;
+		}
+	}
+
 	public static JSONObject getBusUsersToQueueNo(Long busID) {
 		System.out.println("1. BUSES data " + busQueue);
 		System.out.println("GET ALL USER TO QUEUE NO FOR " + busID);
