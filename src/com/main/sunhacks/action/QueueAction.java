@@ -60,7 +60,7 @@ public class QueueAction {
 	
 	public String resetBus() {
 		try {
-			QueueHandler.resetBus(busID)
+			QueueHandler.resetBus(busID);
 			buses = Util.encodeData(QueueHandler.fetchBuses().toString());
 		} catch (Exception e) {
 			e.printStackTrace();
