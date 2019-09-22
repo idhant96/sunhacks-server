@@ -20,6 +20,7 @@ public class QueueHandler {
 		int lastQueueNo = 0;
 		String userUID = "";
 		String status = "failed";
+		boolean entry = true;
 		try {
 			boolean uidVerified = UIDHandler.verifyBeaconUID(beaconUID);
 			if (!uidVerified) {
@@ -45,18 +46,19 @@ public class QueueHandler {
 				responseJSONObj.put("uid", userUID);
 				int capacity = DataSource.getBusCapacity(busID);
 				responseJSONObj.put("capacity", capacity);
-				boolean entry = true;
 				if(lastQueueNo > capacity) {
 					entry = false;
 				}
-				responseJSONObj.put("entry", entry);
+				
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
 			lastQueueNo = -1;
+			entry = false;
 		}
 		
 		responseJSONObj.put("status", status);
+		responseJSONObj.put("entry", entry);
 		return responseJSONObj;
 	}
 

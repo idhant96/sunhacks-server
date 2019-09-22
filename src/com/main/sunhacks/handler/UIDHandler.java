@@ -42,6 +42,7 @@ public class UIDHandler {
 			if(!verified) {
 				System.out.println("Failed verification: Stored uid value: " + BEACON_UID1 + ", " + BEACON_UID2 + " input uid: " + uid);
 			}
+			System.out.println("Failed verification: Stored uid value: " + BEACON_UID1 + ", " + BEACON_UID2 + " input uid: " + uid);
 		}
 		return verified;
 	}
