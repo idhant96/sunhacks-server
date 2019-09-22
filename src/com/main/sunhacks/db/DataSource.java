@@ -53,7 +53,7 @@ public class DataSource {
 		try {
 			rs = stm.executeQuery(query);
 			while (rs.next()) {
-				rs.getInt("capacity");
+				capacity = rs.getInt("capacity");
 			}
 		} finally {
 			if(rs != null) {
